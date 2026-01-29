@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de controle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+        #theme-toggle {
+            position: fixed; 
+            top: 20px;
+            right: 20px;
+            
+            background-color: #f4f7f6; 
+            color: #1a1e24;            
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px; 
+            line-height: 45px; 
+            text-align: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1a1e24; 
+            color: #e0e0e0;          
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1 {
+            color: #ffffff;
+            
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .card {
+            background-color: #2a2f38; 
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); 
+
+            border-radius: 15px;
+            padding: 30px 40px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 800px;
+            box-sizing: border-box;
+            text-align: center;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .botao {
+            background-color: #007bff; 
+            color: white;             
+            
+            display: inline-block;
+            padding: 12px 24px;
+            text-decoration: none;    
+            border-radius: 30px;      
+            cursor: pointer;          
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .botao:hover {
+            background-color: #0099ff; 
+            color: white;
+            box-shadow: 0px 5px 15px rgba(0,123,255,0.4); 
+        }
+    
+        .button-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px; 
+            width: 100%;
+            flex-direction: column; 
+        }
+
+        body.light-mode {
+            background-color: #f4f7f6; 
+            color: #333;               
+        }
+        
+        body.light-mode #theme-toggle {
+            background-color: #2a2f38; 
+            color: #f4f7f6;            
+        }
+
+        body.light-mode h1 {
+            color: #2a2a2a; 
+        }
+
+        body.light-mode .card {
+            background-color: #ffffff; 
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.07); 
+        }
+
+        body.light-mode .botao {
+            background-color: #2a2a2a; 
+            color: white;             
+        }
+
+        body.light-mode .botao:hover {
+            background-color: #ffffff;
+            color: #2a2a2a;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <button id="theme-toggle">☀️</button>
+    
+
+    <div class="card">
+        <h1>ACESSO ADMIN</h1>
+        
+        <div class="button-group">
+            <a href="skylab.energec.local:3000" class="botao">GRAFANA</a>
+            <a href="skylab.energec.local:9090" class="botao">PROMETHEUS</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h1>ACESSO GERAL</h1>
+        
+        <div class="button-group">
+            <a href="skylab.energec.local:3000" class="botao">ACESSO GERAL GRAFANA</a>
+        </div>
+    </div>
+    
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleButton = document.getElementById('theme-toggle');
+            const body = document.body;
+            themeToggleButton.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                if (body.classList.contains('light-mode')) {
+                    themeToggleButton.textContent = '🌙';
+                } else {
+                    themeToggleButton.textContent = '☀️';
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
